@@ -3,14 +3,14 @@
     from time import sleep
     from selenium.common.exceptions import NoSuchElementException
     from selenium.common.exceptions import TimeoutException
+    from selenium import webdriver
+    from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
     import datetime
     today = datetime.date.today()
     today = str(today)
     product_line ="women_jackets"
     def get_data(links, brand, y):
         print y
-        from selenium import webdriver
-        from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
         dcap = dict(DesiredCapabilities.PHANTOMJS)
         dcap["phantomjs.page.settings.userAgent"] = (
              "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/53 "
@@ -126,11 +126,11 @@
     
     brand_name = []
     link = []
+    #will not be providing input file for this project this time
     with open("brand_links_jackets_csv.csv", "r") as csvf:
         rows = csv.reader(csvf)
         for row in rows:
             brand_name.append(str(row[0]))
-            # temp = "http://www.myntra.com/"+row[1]
             temp = row[1]
             # print temp
             link.append(str(temp))
